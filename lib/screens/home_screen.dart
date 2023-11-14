@@ -6,6 +6,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LoginScreen();
+    return Scaffold(backgroundColor: Colors.black38, body: LoginScreen());
   }
 }

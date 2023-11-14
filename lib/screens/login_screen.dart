@@ -1,9 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:login_ui_mvc/widgets/custom_text_field.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,8 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 150),
+              const SizedBox(height: 50),
+
               // logo
               SizedBox(
                 height: 100,
@@ -33,26 +38,77 @@ class LoginScreen extends StatelessWidget {
                   'assets/images/odcl_logo.png',
                 ),
               ),
+              const SizedBox(height: 50),
 
               Container(
-                margin: EdgeInsets.only(
-                  top: 50.0,
-                  left: 70.0,
-                  right: 20.0,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 16),
                 alignment: Alignment.topLeft,
-                child: Text(
-                  "Email Address",
-                  style: TextStyle(
-                    fontSize: 16,
-                    decoration: TextDecoration.none,
-                    color: Colors.black87,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Email Address",
+                      style: TextStyle(
+                        fontSize: 16,
+                        decoration: TextDecoration.none,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    CustomTextField(
+                      controller: emailController,
+                      hintText: "",
+                      obsCuretext: false,
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      "Password",
+                      style: TextStyle(
+                        fontSize: 16,
+                        decoration: TextDecoration.none,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    CustomTextField(
+                      controller: passwordController,
+                      hintText: "",
+                      obsCuretext: true,
+                    ),
+                    const SizedBox(height: 24),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 48,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Log In"),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 48,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            side: const BorderSide(
+                              width: 2.0,
+                              color: Colors.white,
+                            )),
+                        child: Text("Sign Up"),
+                      ),
+                    ),
+                    const SizedBox(height: 48),
+                    Center(
+                      child: Text(
+                        "FORGOT PASSWORD?",
+                        style: TextStyle(
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    )
+                  ],
                 ),
-              ),
-              Divider(
-                thickness: 1,
-                color: const Color.fromARGB(255, 0, 0, 0),
               ),
             ],
           ),
